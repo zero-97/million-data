@@ -20,26 +20,26 @@ public class MillionDataController {
     private IAsyncTaskLogService asyncTaskLogService;
 
     /**
-     * 同步导出
-     * @param response
-     */
-    @GetMapping("export")
-    public void export(HttpServletResponse response){
-        try {
-            service.export(response);
-        } catch (IOException e) {
-        }
-    }
-
-    /**
-     * 异步导出
+     * 异步-分页导出
      * @return
      * @throws FileNotFoundException
      */
-    @GetMapping("exportAsyn")
-    public int exportAsyn() throws FileNotFoundException {
+    @GetMapping("exportByPage")
+    public int exportByPage() {
         int logId = asyncTaskLogService.insert();
-        service.exportAsyn(logId);
+        service.exportByPage(logId);
+        return logId;
+    }
+
+    /**
+     * 异步-流式导出
+     * @return
+     * @throws FileNotFoundException
+     */
+    @GetMapping("exportByStream")
+    public int exportByStream() {
+        int logId = asyncTaskLogService.insert();
+        service.exportByStream(logId);
         return logId;
     }
 

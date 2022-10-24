@@ -6,7 +6,8 @@ import java.io.IOException;
 
 public interface IMillionDataService {
 
-    void export(HttpServletResponse response) throws IOException;
+    void exportByPage(int uuid);
 
-    void exportAsyn(int uuid) throws FileNotFoundException;
+    void exportByStream(int uuid);
+
 }

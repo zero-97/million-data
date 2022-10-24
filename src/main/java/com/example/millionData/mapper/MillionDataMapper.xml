@@ -26,4 +26,10 @@
         limit ${pageSize}
     </select>
 
+    <select id="searchByStream" resultMap="BaseResultMap" resultSetType="FORWARD_ONLY" fetchSize="-2147483648">
+        select
+        <include refid="Base_Column_List"/>
+        from million_data
+        order by id
+    </select>
 </mapper>
